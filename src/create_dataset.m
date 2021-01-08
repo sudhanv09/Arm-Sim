@@ -8,20 +8,24 @@ for i=0:1000
     
     q01 = randi([0,180]);
     q02 = randi([0,90]);
-    q03 = randi([0,90]);
+    q03 = randi([-90,90]);
+    q04 = randi([-90,90]);
+    d1 = randi([0,260]);
     
-   T10 = subs(T,{th,d,a,alph},{q01,80.3,0,90});             
+   T10 = subs(T,{th,d,a,alph},{q01,225,0,90});             
 
-   T21 = subs(T,{th,d,a,alph},{q02,0,67.86,0});              
+   T21 = subs(T,{th,d,a,alph},{q02,0,470,0});              
            
-   T32 = subs(T,{th,d,a,alph},{q03-90,0,98.31,-90}); 
+   T32 = subs(T,{th,d,a,alph},{q03,0,0,90}); 
    
-   T43 = subs(T,{th,d,a,alph},{0,23.08,0,0}); 
+   T43 = subs(T,{th,d,a,alph},{0,0,d1,-90});
+   
+   T54 = subs(T,{th,d,a,alph},{q04,0,176,0});
 
-   T_EndEffector = T10*T21*T32*T43;
+   T_EndEffector = T10*T21*T32*T43*T54;
    
    T__EndEffector = double(T_EndEffector); 
-   dataArray = [q01, q02, q03, T__EndEffector(:,4)'];
+   dataArray = [q01, q02, q03,q04, d1 T__EndEffector(:,4)'];
    writematrix(dataArray, 'trainset.csv', 'WriteMode',"append");
    
 end   
