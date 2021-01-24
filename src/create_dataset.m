@@ -25,7 +25,7 @@ for i=0:1000
    T_EndEffector = T10*T21*T32*T43*T54;
    
    T__EndEffector = double(T_EndEffector); 
-   dataArray = [q01, q02, q03,q04, d1 T__EndEffector(:,4)'];
+   dataArray = [q01, q02, q03, q04, d1 T__EndEffector(:,4)'];
    writematrix(dataArray, 'trainset.csv', 'WriteMode',"append");
    
 end   
