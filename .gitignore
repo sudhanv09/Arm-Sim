@@ -3,3 +3,5 @@
 .vscode
 src/__pycache__
 dataset/3dshapes.h5
+dataset/features.npy
+dataset/labels.npy
